@@ -1,4 +1,4 @@
-package com.example.live.user;
+package com.example.javadocker.live.user;
 
 import java.util.List;
 
