@@ -5,7 +5,7 @@ select "movies"."title" as "title",
 COUNT(DISTINCT "characters"."character_name") as count_characters_in_movie
 FROM movies
 LEFT JOIN characters ON "movies"."id_movie"="characters"."id_movie"
-WHERE "movies"."release_date" > '2012'
+WHERE "movies"."release_date" < '2012'
 GROUP BY "movies"."id_movie"
 ORDER BY count_characters_in_movie desc, "movies"."title" ASC;
 
