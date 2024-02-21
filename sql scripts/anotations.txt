@@ -1,0 +1,27 @@
+```java
+@Entity
+name = "movies"
+public class Movie
+{
+@column
+(
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+)
+private Long idMovie;
+
+@column (name = "title", nullable = false)
+private String title;
+
+@column (name = "release_date")
+private Integer releaseDate;
+
+@column (name = "description", nullable = false)
+private String description;
+
+@column (name = "rating")
+private Double rating;
+}
+```
+
+
