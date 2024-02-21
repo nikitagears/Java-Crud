@@ -1,7 +1,7 @@
 package model;
 @Entity
 name = "movies"
-public class Movie
+public class Movies
 {
     @column
             (
