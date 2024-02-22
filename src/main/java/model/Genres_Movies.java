@@ -1,12 +1,17 @@
 package model;
-@Entity
-name = "genres_movies"
-public class Genres_Movies
-{
-    @column (name = "id_genre", nullable = false)
-    private Integer id_genre;
+import jakarta.persistence.*;
+import jakarta.persistence.UniqueConstraint;
 
-    @column (name = "id_movie", nullable = false)
-    private Integer id_movie;
+@Table(
+        name = "genres_movies", uniqueConstraints = {@UniqueConstraint(columnNames = {"id_genre"})}
+)
+
+@Entity
+public class genres_movies {
+
+    @Column(name = "id_genre", nullable = false)
+    private String id_genre;
+    @Column(name = "id_movie", nullable = false)
+    private String id_movie;
 
 }

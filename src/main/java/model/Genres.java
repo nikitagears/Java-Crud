@@ -1,21 +1,21 @@
 package model;
+import jakarta.persistence.*;
+import jakarta.persistence.UniqueConstraint;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+@Table(
+        name = "genres", uniqueConstraints = {@UniqueConstraint(columnNames = {"id_genre"})}
+)
 
 @Entity
-name = "genres"
-public class Genres
-{
-    @column
-            (
-                    @Id
-                    @GeneratedValue(strategy = GenerationType.IDENTITY)
-            )
-    private Long id_genre;
+public class genres {
 
-    @column (name = "genre", nullable = false)
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Integer id_genre;
+
+    @Column(name = "genre", nullable = false)
     private String genre;
 
 }

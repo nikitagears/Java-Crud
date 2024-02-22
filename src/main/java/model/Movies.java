@@ -1,24 +1,30 @@
 package model;
-@Entity
-name = "movies"
-public class Movies
-{
-    @column
-            (
-                    @Id
-                    @GeneratedValue(strategy = GenerationType.IDENTITY)
-            )
-    private Long id_movie;
+import jakarta.persistence.*;
+import jakarta.persistence.UniqueConstraint;
 
-    @column (name = "title", nullable = false)
+@Table(
+        name = "movies", uniqueConstraints = {@UniqueConstraint(columnNames = {"id_movie"})}
+)
+
+@Entity
+public class movies {
+
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Integer id_movie;
+
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @column (name = "release_date")
-    private Integer release_Date;
+    @Column(name = "release_date", nullable = false)
+    private Integer release_date;
 
-    @column (name = "description", nullable = false)
-    private String description;
+    @Column(name = "desciption", nullable = false)
+    private String desciption;
 
-    @column (name = "rating")
+    @Column(name = "rating", nullable = false)
     private Double rating;
+
 }
