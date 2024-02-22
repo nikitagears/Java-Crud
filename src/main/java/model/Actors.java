@@ -1,22 +1,27 @@
 package model;
-@Entity
-name = "actors"
-public class Actors
-{
-    @column
-            (
-                    @Id
-                    @GeneratedValue(strategy = GenerationType.IDENTITY)
-            )
-    private Long id_actor;
+import jakarta.persistence.*;
+import jakarta.persistence.UniqueConstraint;
 
-    @column (name = "actor_name", nullable = false)
+@Table(
+        name = "actors", uniqueConstraints = {@UniqueConstraint(columnNames = {"id_actor"})}
+)
+
+@Entity
+public class actors {
+
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Integer id_actor;
+
+    @Column(name = "actor_name", nullable = false)
     private String actor_name;
 
-    @column (name = "gender", nullable = false)
+    @Column(name = "gender", nullable = false)
     private String gender;
 
-    @column (name = "birthday", nullable = false)
-    private Integer birthday;
+    @Column(name = "birthday", nullable = false)
+    private String birthday;                      //какой формат для даты?
 
 }
