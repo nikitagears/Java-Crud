@@ -1,4 +1,4 @@
-package com.example.javadocker.live.user;
+package com.example.javadocker.live.model;
 
 import jakarta.persistence.*;
 
