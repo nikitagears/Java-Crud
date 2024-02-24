@@ -1,50 +1,59 @@
 package com.example.javadocker.live.user;
 
-import com.example.javadocker.live.model.User;
-import com.example.javadocker.live.repository.UserRepository;
+import java.util.List;
+
+import com.example.javadocker.live.model.Actor;
+import com.example.javadocker.live.repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/actors")
 public class ActorController {
 
-  @Autowired
-  private UserRepository userRepository;
+    @Autowired
+    private ActorRepository actorRepository;
 
-  @GetMapping
-  public List<User> getAllUsers() {
-    return userRepository.findAll();
-  } 
-
-  @GetMapping("/{id}")
-  public User getUserById(@PathVariable Long id) {
-    return userRepository.findById(id).get();
-  }
-
-  @PostMapping
-  public User createUser(@RequestBody User user) {
-    return userRepository.save(user);
-  }
-
-  @PutMapping("/{id}")
-  public User updateUser(@PathVariable Long id, @RequestBody User user) {
-    User existingUser = userRepository.findById(id).get();
-    existingUser.setName(user.getName());
-    existingUser.setEmail(user.getEmail());
-    return userRepository.save(existingUser);
-  }
-
-  @DeleteMapping("/{id}")
-  public String deleteUser(@PathVariable Long id) {
-    try {
-      userRepository.findById(id).get();
-      userRepository.deleteById(id);
-      return "User deleted successfully";
-    } catch (Exception e) {
-      return "User not found";
+    @GetMapping
+    public List<Actor> getAllActors() {
+        return actorRepository.findAll();
     }
-  }
+
+
+    /////////////////////////чей тут айди ??
+    @GetMapping("/{idActor}")
+
+    /////////////////////////чей тут айди ??
+    public Actor getActorById(@PathVariable Integer idActor) {
+        return actorRepository.findById(idActor).get();
+    }
+
+
+    //////////////////////////откуда взялся createUser
+    @PostMapping
+    public Actor createActor(@RequestBody Actor actor) {
+        return actorRepository.save(actor);
+    }
+
+
+    /////////////////////////чей тут айди ?? откуда updateUser
+    @PutMapping("/{idActor}")
+    public Actor updateActor(@PathVariable Integer idActor, @RequestBody Actor actor) {
+        Actor existingActor = actorRepository.findById(idActor).get();
+        existingActor.setActorName(actor.getActorName());
+        return actorRepository.save(existingActor);
+    }
+
+
+    /////////////////////////чей тут айди ??
+    @DeleteMapping("/{idActor}")
+    public String deleteActor(@PathVariable Integer idActor) {
+        try {
+            actorRepository.findById(idActor).get();
+            actorRepository.deleteById(idActor);
+            return "Actor deleted successfully";
+        } catch (Exception e) {
+            return "Actor not found";
+        }
+    }
 }

@@ -66,7 +66,6 @@ public class Actor {
         this.birthday = birthday;
     }
 
-
     public Set<Character> getCharacters() {
         return characters;
     }
